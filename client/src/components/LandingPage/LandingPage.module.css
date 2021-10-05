@@ -1,0 +1,9 @@
+
+.bg {
+    background-image: url(./tubo.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    height:1080px;
+    width: 100%;
+}
+
