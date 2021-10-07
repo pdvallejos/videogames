@@ -1,8 +1,7 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
-import {useState, useEffect} from "react";
 import {useDispatch, useSelector} from 'react-redux'
-import { getGames } from '../../action';
+import { getGames, getDetail, selectData, sort_AZ_ZA, sort_by_Rating, filterGenre, getGenres } from '../../action';
 import CardGame from '../CardGame/CardGame';
 import Loading from '../Loading/Loading'
 import SearchBar from '../SearchBar/SearchBar';
@@ -12,30 +11,49 @@ import Styles from './Home.module.css'
 
 
 
+
+
 export default function Home() {
     const dispatch = useDispatch()
     const loading = useSelector( state => state.loading)
     const allG = useSelector((state) => state.oneGames)
+    const data = useSelector((state) => state.data)
+    const[currentPage, setCurrentPage] = useState(1)
+    const toGenres = useSelector((state) => state.stateGenres)
+    
+
+  //  console.log(toGenres, '----------algenres')
     
     useEffect(() => {
         dispatch(getGames())
+        dispatch(getGenres())
     }, [dispatch])
+
+    // selecciona por creados, no creados y all
+    let result = allG
+    if(data === "Created"){
+        result = allG.filter( e => typeof(e.id) === "string")
+       
+    } else if ( data === "Other"){
+        result = allG.filter( e => typeof(e.id) === "number")
+       
+    }
     
     //--------------- paginado ------------------\\
     
-    const[currentPage, setCurrentPage] = useState(1)
+    
   //  console.log(currentPage, ' ---------- current page')
-    const[xPage] = useState(9)
+    const[xPage] = useState(9)                  //---------------cantidad de games x pagina
   //  console.log(xPage, '----------------- xpage')
     const indexLast = currentPage * xPage
  //   console.log(indexLast, '--------------index last')
     const indexFirst = indexLast - xPage
  //   console.log(indexFirst, '------------ index first')
 
-    var currentGame = allG.slice(indexFirst, indexLast)
+    var currentGame = result.slice(indexFirst, indexLast)
     const paginate = (pageNumber) =>{setCurrentPage(pageNumber)}
     
-    const allpages = Math.ceil(allG.length / xPage)
+    const allpages = Math.ceil(result.length / xPage)
     var next = currentPage;
     var previus = currentPage;
     if(currentPage < allpages){
@@ -44,8 +62,30 @@ export default function Home() {
     if(currentPage > 1){
         previus = currentPage - 1
     }
-//    console.log(currentGame, '------------- console log currengame')
+
 //    console.log(allpages, '------------- console log allpages')
+// -------------------- filtrados ----------------------------\\
+function handleFilterGenre(e){
+    e.preventDefault()
+    dispatch(filterGenre(e.target.value))
+  //  console.log(e.target.value, '------------value en home')
+}
+
+function handleFilterCreate(e){
+    e.preventDefault()
+    dispatch(selectData(e.target.value))
+  //  console.log(e.target.value, '------------- target value')
+}
+
+function handleSort(e){
+    e.preventDefault()
+    dispatch(sort_AZ_ZA(e.target.value))
+}
+
+function handleRating(e){
+    e.preventDefault()
+    dispatch(sort_by_Rating(e.target.value))
+}
 
 // ---------------- fin del paginado ---------------------------\\
 
@@ -55,15 +95,38 @@ export default function Home() {
             <div>
                 <div>
                     <SearchBar/>
+                    <Link to='/videogames'>
+                    <button>Create</button>
+                    </Link>
+
                 </div>
-              
+                    <select onChange={(e) => handleFilterCreate(e)} name="filtercreate" id="filtercreate">
+                        <option value="All">All</option>
+                        <option value="Created">Created</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <select onChange={e=> handleSort(e)} name="sort" id="sort">
+                                <option value='az'>Ascendent A-Z</option>
+                                <option value='za'>Descendent Z-A</option>
+                    </select>
+                    <select onChange={e => handleRating(e)}name="" id="">
+                        <option value="best">Rating Up</option>
+                        <option value="worst">Rating Down</option>
+                    </select>
+                    <select onChange={ (e) => handleFilterGenre(e)} name="" id="">
+                            <option value="All">Genres</option>
+                                 {toGenres?.map(e => 
+                             <option value={e.name}>{e.name}</option>
+                             )}
+                    </select>
+                    
                 <div className={Styles.grid}>
                 
                     {
 
                         currentGame?.map( (e, idx) => {
                         return <div key={idx}>  
-                              <Link to={`/videogame/${e.id}`}>
+                              <Link onClick={() =>dispatch(getDetail(e.id))} to={`/videogame/${e.id}`}>
                                 <CardGame name={e.name} img={e.img} genres={e.genres}/>
                               </Link>
                                </div>
@@ -74,7 +137,7 @@ export default function Home() {
                     
                     <Paginado 
                         xPage={xPage} 
-                        allG={allG.length} 
+                        result={result.length} 
                         paginate={paginate}
                         previus={previus}
                         next={next}

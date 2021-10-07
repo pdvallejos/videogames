@@ -14,7 +14,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.use('/videogame', videogame)
 router.use('/videogames', videogames)
-router.use('/genre', genre)
+router.use('/genres', genre)
 
 module.exports = router;
 
