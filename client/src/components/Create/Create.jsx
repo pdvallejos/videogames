@@ -4,11 +4,13 @@ import { getGames, getGenres } from '../../action'
 import {useState, useEffect} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
+import Styles from './Create.module.css'
+
 
 
 export default function Create() {
     const dispatch = useDispatch()
-    const allPlatforms=['PlayStation','Xbox','Nintendo','SEGA','Android','3DO','Atari','Linux','iOS','Commodore','Apple Macintosh']
+    const allPlatforms=['PlayStation', 'Pc','Xbox','Nintendo','SEGA','Android','3DO','Atari','Linux','iOS','Commodore','Apple Macintosh']
     const allGenres= useSelector((state) => state.stateGenres)
     const [form, setForm] = useState({
         name:"",
@@ -47,7 +49,7 @@ export default function Create() {
         e.preventDefault()
         setForm({
             ...form,
-            platforms: [...form.platforms, e.target.value]
+            platforms: [...form.platforms, e.target.option]
             
         })
       
@@ -68,14 +70,15 @@ export default function Create() {
     }
  //  console.log(form, "----------- console form")
     return (
-        <div>
-            <h1>crear juego</h1>
+        <div className={Styles.caja}> 
+            <h1 className={Styles.titlecre}>CREATE YOUR GAME</h1>
             <Link to={'/home'}>
-             <button>Home</button>
+             <button className={Styles.buttonCreate}>Home</button>
             </Link>
-            <form >
-                <label >Name:</label>
-                <input 
+            <div className={Styles.cuadrado}>
+            <form className={Styles.form}>
+                <label className={Styles.label}>Name:</label>
+                <input className={Styles.input}
                 type="text" 
                 name="name"
                 value={form.name}
@@ -90,6 +93,7 @@ export default function Create() {
                 rows="10"
                 value={form.description}
                 onChange={(e) => handleChange(e)}
+                required
                 ></textarea>
 
                 <label htmlFor="Released date:">Released date:</label>
@@ -124,7 +128,7 @@ export default function Create() {
                     </label>
                         
                     <label >Platforms:
-                        <select onChange={(e) => handlePlatforms(e)} type="checkbox"name="platforms" id="platforms" defaultValue="" required>
+                        <select onChange={(e) => handlePlatforms(e)} name="platforms" id="platforms"  required>
                             <option name="platforms" value=""> - - - - - - - </option>
                             {
                                 allPlatforms.map( p => (
@@ -132,6 +136,7 @@ export default function Create() {
                                     
                                 ))
                             }
+                          
                         </select>
                     </label>
                     <label htmlFor="image">Image:</label>
@@ -143,8 +148,10 @@ export default function Create() {
                     value={form.img}
                     />
             </form>
-
-            <button onClick={e => handleSubmit(e)} type="submit">CREATE!</button>
+            </div> 
+            <div className={Styles.preButton}>
+            <button onClick={e => handleSubmit(e)} className={Styles.buttonCreate} type="submit">CREATE!</button>
+            </div>                   
         </div>
     )
 }

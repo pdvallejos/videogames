@@ -80,6 +80,13 @@ function rootReducer(state = initialState, action){
                 oneGames: filtro
             }
         }
+
+        case 'RESET_DETAIL':{
+            return {
+                ...state,
+                detail: action.payload
+            }
+        }
         default:
             return state
     };

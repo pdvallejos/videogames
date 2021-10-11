@@ -1,0 +1,89 @@
+
+@font-face {
+    font-family: 'Cyberpunk';
+    src: url(../../fonts/Cyberpunk-Regular.ttf);
+}
+@import url(https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple);
+
+.titlecre {
+    font-family: Cyberpunk, sans-serif ;
+    
+    color: yellow;
+    text-align: center;
+    font-size: 62px;
+    /* text-shadow: var(--text-shadow) ; */
+    text-shadow:chartreuse 2px 3px 0px;
+    line-height: 1.5;
+    padding: 10px 0px;
+  }
+
+
+
+.caja {
+    background-image: url(./bg.png);
+    background-size: cover;
+    justify-content: center;
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    align-content: center;
+   
+    
+
+    
+}
+
+.cuadrado {
+    box-sizing: content-box;
+    background-color:rgb(110, 109, 109,0.8);
+    color:silver;
+    border-radius: 30px;
+    flex-direction: column;
+    width: 290px;
+    height: 450px;
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    align-content: center;
+    border-color:  10px solid black;
+    
+        
+  }
+
+.form {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    font-style: italic;
+    font-weight:500;
+    
+}
+.label{
+    margin-top: 10px;
+}
+
+.input{
+    margin-top: 10px;
+}
+
+.buttonCreate{
+    margin-left: 10%;
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    color:#000000;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    overflow: hidden;
+    transition: 0.2s;
+    background: linear-gradient(#9b0202, #ffebeb, #ee3d3d);
+    border: solid 1px rgb(255, 255, 255);
+    border-radius: 60px;
+}
+.buttonCreate:hover{
+    color: #ffffff;
+    background: #d01500;
+    box-shadow: 0 0 010px #d01500, 0 0 10px #d01500,0 0 40px #d01500,0 0 60px #d01500,0 0 80px #d01500,0 0 100px #d01500;
+    transition-delay:1s;
+    transition: 0.5ms;
+}

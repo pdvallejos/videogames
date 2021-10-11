@@ -11,7 +11,7 @@ export default function Paginado({xPage, result, paginate, next, previus}) {
     return (
         <nav className={styles.nav} >
             <ul className={styles.p_ul}>
-                <button onClick={() => paginate(previus)} >Previus</button>
+                <button className={styles.loader} onClick={() => paginate(previus)} >Before</button>
                 {pageNumber.map(number => 
                 <li className={styles.p_li} key={number} >
                     <a className={styles.a_li} onClick={() => paginate(number)} >
@@ -19,7 +19,7 @@ export default function Paginado({xPage, result, paginate, next, previus}) {
                     </a>
                 </li>
                     )}
-                <button onClick={() => paginate(next)} >Next</button>
+                <button className={styles.loader} onClick={() => paginate(next)} > N e x t </button>
             </ul>
         </nav>
     )

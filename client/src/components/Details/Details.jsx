@@ -1,34 +1,47 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { resetDetails } from '../../action';
+import './Details.css';
 
 
 export default function Details() {
     
-    
-
+    const dispatch = useDispatch()
+    const history = useHistory()
   
     
     let resp = useSelector(state => state.detail) 
 
+    function handleBack(e){
+        e.preventDefault()
+        dispatch(resetDetails())
+        history.push('/home')
+    }
     // console.log(resp, '---------------este es el console de resp')
     // console.log(props, '------------------ console log de props')
 
         return (
-            <div>{
-            
-                    resp ? (
+            <div >{
+                resp && resp.platforms && resp.genres ? (
+                    <div class="recaja">
                         <div>
-                        <h2>Name : {resp.name}</h2>
-                    <div>
-                        <img src={resp.img} alt="Not found Img" />
-                    </div>
-                    <div>
-                        <p>Rating: {resp.rating}</p>
-                        <p>Genre: {resp.genres.length > 0 ?resp.genres.map(g => g.name + (" - ")): "Empty"}</p>
-                        <p>Description:{resp.description}</p>
-                        <p>Released:{resp.released}</p>
-                        <p>Platforms{resp.platforms.length > 0?resp.platforms.map(p => p.name + (" - ")): "empty"}</p>
-                    </div>
+                        <button class="backDetails"onClick={ (e) => handleBack(e)}>Back</button>
+
+                        </div>
+                        <h2 class="h3_details">Name : {resp.name}</h2>
+                        
+                        <img class="image" src={resp.img} alt="Not found Img" />
+                        
+                    
+                        <p class="p">Rating: {resp.rating}</p>
+                        <p class="p">Genre: {resp.genres !== undefined ?resp.genres.map(g => g.name + (" - ")): "Empty"}</p>
+                      
+                        <p class='conteinDesc'>Description:{resp.description}</p>
+                      
+                        <p class="p">Released:{resp.released}</p>
+                        <p class="p">Platforms{resp.platforms !== undefined ?resp.platforms.map(p => p.name + (" - ")): "empty"}</p>
+                   
                     </div>
                     ) : <h1>cargando....</h1>
             

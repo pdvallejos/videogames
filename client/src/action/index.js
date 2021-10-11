@@ -123,3 +123,10 @@ export function filterGenre(payload){
         payload
     }
 }
+
+export function resetDetails(){
+    return{
+        type: 'RESET_DETAIL',
+        payload: []
+    }
+}
