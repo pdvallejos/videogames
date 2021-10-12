@@ -2,7 +2,6 @@
     margin-bottom: 0 ;
     background: #151515;
     height: 20%;
-    /* position:absolute; */
     text-align: center;
     width: 100%;
     align-self: center;
@@ -13,22 +12,20 @@
 .search:before,
 .search:after{
     content: '';
-    /* display: block; */
     height: 1px;
     left: 50%;
     margin: 0 0 0 -400px;
-    /* position: absolute; */
     width: 800px;
 }
 .search:before{
     background: #4444;
-    background: linear-gradient(left, #151515, #444, #151515);
+    background: linear-gradient(to left, #151515, #444, #151515);
     top: 192;
 }
 
 .search:after{
     background: #000;
-    background:linear-gradient(left, #151515, #000, #151515 );
+    background:linear-gradient(to left, #151515, #000, #151515 );
     top: 191px;
 }
 .search form{
@@ -39,7 +36,6 @@
     box-shadow: insert 0 0 0 1px #272727;
     display: inline-block;
     font-size: 0px;
-    /* margin: 150px auto 0; */
     padding: relative;
     z-index: 1;
 }

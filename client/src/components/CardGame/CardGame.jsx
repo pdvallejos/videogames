@@ -20,5 +20,3 @@ export default function CardGame({name, img, genres}) {
         </div>
     )
 }
-{/*className={Styles.card}*/}
-{/*className={Styles.img}*/}

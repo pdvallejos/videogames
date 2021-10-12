@@ -18,11 +18,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    relase_date: {
+    img: {
+      type: DataTypes.TEXT,
+    },
+    released: {
       type: DataTypes.DATEONLY,
     },
     rating: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.STRING,
     },
     platforms: {
       type: DataTypes.ARRAY(DataTypes.STRING),

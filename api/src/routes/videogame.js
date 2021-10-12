@@ -37,16 +37,16 @@ router.get('/:id', async (req,res) => {
 })
 
 router.post('/', async (req,res) => {
-    const { name, description, relase_date,genres, rating, platforms, createdAt} = req.body;
+    const { name, description, released,genres, rating, platforms, img, createdAt} = req.body;
 
     try {
         const createdGame = await Videogame.create({
-        name, description, relase_date, rating, platforms, createdAt
+        name, description, released, rating, platforms, img, createdAt
     });
 
-    const generos= genres.map(async g => {
+    const generos= genres?.map(async g => {
         const gbyGame= await Genre.findByPk( g );
-        createdGame.addGenres(gbyGame)
+        createdGame.addGenres(gbyGame);
     });
 
     await Promise.all(generos)

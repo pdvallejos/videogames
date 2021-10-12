@@ -14,7 +14,7 @@ export default function Paginado({xPage, result, paginate, next, previus}) {
                 <button className={styles.loader} onClick={() => paginate(previus)} >Before</button>
                 {pageNumber.map(number => 
                 <li className={styles.p_li} key={number} >
-                    <a className={styles.a_li} onClick={() => paginate(number)} >
+                    <a className={styles.a_li} href="!#" onClick={() => paginate(number)} >
                         {number}
                     </a>
                 </li>

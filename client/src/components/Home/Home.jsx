@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
-import { getGames, getDetail, selectData, sort_AZ_ZA, sort_by_Rating, filterGenre, getGenres, resetPage } from '../../action';
+import { getGames, getDetail, selectData, sort_AZ_ZA, sort_by_Rating, filterGenre, getGenres} from '../../action';
 import CardGame from '../CardGame/CardGame';
 import Loading from '../Loading/Loading'
 import SearchBar from '../SearchBar/SearchBar';

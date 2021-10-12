@@ -18,7 +18,6 @@ export default function Details() {
         dispatch(resetDetails())
         history.push('/home')
     }
-    // console.log(resp, '---------------este es el console de resp')
     // console.log(props, '------------------ console log de props')
 
         return (
@@ -39,8 +38,8 @@ export default function Details() {
                       
                         <p class='conteinDesc'>Description:{resp.description}</p>
                       
-                        <p class="p">Released:{resp.released}</p>
-                        <p class="p">Platforms{resp.platforms !== undefined ?resp.platforms.map(p => p.name + (" - ")): "empty"}</p>
+                        <p class="p">Released: {resp.released}</p>
+                        <p class="p">Platforms: {resp.platforms !== undefined ?resp.platforms.map(p => p + (" - ")): "empty"}</p>
                    
                     </div>
                     ) : <h1>cargando....</h1>
