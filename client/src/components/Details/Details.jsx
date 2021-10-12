@@ -39,7 +39,11 @@ export default function Details() {
                         <p class='conteinDesc'>Description:{resp.description}</p>
                       
                         <p class="p">Released: {resp.released}</p>
-                        <p class="p">Platforms: {resp.platforms !== undefined ?resp.platforms.map(p => p + (" - ")): "empty"}</p>
+                        {
+                             typeof( resp.id) === "string" ?
+                             <p class="p">Platforms: {resp.platforms !== undefined ?resp.platforms.map(p => p.split(" ").join(" - ")): "empty"}</p> :
+                            <p class="p">Platforms: {resp.platforms !== undefined ?resp.platforms.map(p => p.name + (" - ")): "empty"}</p>
+                        }
                    
                     </div>
                     ) : <h1>cargando....</h1>

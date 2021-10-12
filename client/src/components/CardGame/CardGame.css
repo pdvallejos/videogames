@@ -51,7 +51,10 @@
     cursor: pointer;
 }
 
-
+.genre_p{
+    font-size: 10px;
+    margin-top: 0;
+}
 
 .circle div{
     height: 250px;

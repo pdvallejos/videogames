@@ -3,17 +3,17 @@ import './CardGame.css'
 
 export default function CardGame({name, img, genres}) {
     return (
-      <div class="fondo">
-        <div class="outer circle">
+      <div className="fondo">
+        <div className="outer circle">
                 <span></span>
                 <span></span>
           <div>
-            <h3 class="h3">{name}</h3>
-            <img class="img"  src={img} alt="Not Found" />
+            <h3 className="h3">{name}</h3>
+            <img className="img"  src={img} alt="Not Found" />
             <arguments>
             { typeof genres[0] === 'object' ? 
-             genres.map(g=> <p>  {g.name + " - "}</p>):
-             genres.map(g=> <p>{g + " - "}</p>) }
+             genres.map(g=> <p className="genre_p">  {g.name + " - "}</p>):
+             genres.map(g=> <p className="genre_p">{g + " - "}</p>) }
              </arguments>
              </div>
         </div>

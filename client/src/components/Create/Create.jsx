@@ -104,7 +104,7 @@ export default function Create() {
         <div className={Styles.caja}>
             {
                 !created ?(
-                <div className={Styles.caja}> 
+                <div > 
                     <h1 className={Styles.titlecre}>CREATE YOUR GAME</h1>
                     <Link to={'/home'}>
                      <button className={Styles.buttonCreate}>Home</button>

@@ -28,6 +28,10 @@
     
     
 }
+.p_button{
+    background: none;
+    border: none;
+}
 .p_li:hover {
     color: #255784;
     background: #2196f3;
