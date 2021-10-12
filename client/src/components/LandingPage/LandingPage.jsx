@@ -4,11 +4,11 @@ import'./LandingPage.css'
 
 export default function LandingPage() {
     return (
-        <div class="bg">
+        <div className="bg">
             <div>
-            <h1 class="title">VIDEOGAMES APP</h1>
+            <h1 className="title">VIDEOGAMES APP</h1>
             </div>
-            <div class="outer button">
+            <div className="outer button">
                 <Link to='/home'>
                 <button target='_blank'>E N T E R</button>
                 <span></span>

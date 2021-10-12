@@ -23,26 +23,26 @@ export default function Details() {
         return (
             <div >{
                 resp && resp.platforms && resp.genres ? (
-                    <div class="recaja">
+                    <div className="recaja">
                         <div>
-                        <button class="backDetails"onClick={ (e) => handleBack(e)}>Back</button>
+                        <button className="backDetails"onClick={ (e) => handleBack(e)}>Back</button>
 
                         </div>
-                        <h2 class="h3_details">Name : {resp.name}</h2>
+                        <h2 className="h3_details">Name : {resp.name}</h2>
                         
-                        <img class="image" src={resp.img} alt="Not found Img" />
+                        <img className="image" src={resp.img} alt="Not found Img" />
                         
                     
-                        <p class="p">Rating: {resp.rating}</p>
-                        <p class="p">Genre: {resp.genres !== undefined ?resp.genres.map(g => g.name + (" - ")): "Empty"}</p>
+                        <p className="p">Rating: {resp.rating}</p>
+                        <p className="p">Genre: {resp.genres !== undefined ?resp.genres.map(g => g.name + (" - ")): "Empty"}</p>
                       
-                        <p class='conteinDesc'>Description:{resp.description}</p>
+                        <p className='conteinDesc'>Description:{resp.description}</p>
                       
-                        <p class="p">Released: {resp.released}</p>
+                        <p className="p">Released: {resp.released}</p>
                         {
                              typeof( resp.id) === "string" ?
-                             <p class="p">Platforms: {resp.platforms !== undefined ?resp.platforms.map(p => p.split(" ").join(" - ")): "empty"}</p> :
-                            <p class="p">Platforms: {resp.platforms !== undefined ?resp.platforms.map(p => p.name + (" - ")): "empty"}</p>
+                             <p className="p">Platforms: {resp.platforms !== undefined ?resp.platforms.map(p => p.split(" ").join(" - ")): "empty"}</p> :
+                            <p className="p">Platforms: {resp.platforms !== undefined ?resp.platforms.map(p => p.name + (" - ")): "empty"}</p>
                         }
                    
                     </div>

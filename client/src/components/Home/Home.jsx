@@ -102,12 +102,9 @@ function handleRating(e){
               <div className={Styles.background}>
                 <div className={Styles.divNav} >
                     <nav className={Styles.nav} >
-               
-                   
-                    <SearchBar /> 
-                    
-                {/* <video src="./wireframe.mp4" autoplay loop poster="./fondo.png"></video> */}
-                
+
+                    <SearchBar/> 
+
                 <div className={Styles.filtros}>
                     
                     <select className={Styles.select} onChange={(e) => handleFilterCreate(e)} name="filtercreate" id="filtercreate">

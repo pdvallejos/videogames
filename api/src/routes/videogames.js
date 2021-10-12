@@ -67,7 +67,7 @@ router.get('/', async (req, res) => {
             genres: e.genres.map( g => g.name),
             rating: e.rating_top,
             platforms: e.parent_platforms.map( p => p.name),
-            released: a.released  
+            released: e.released
         }
     });
 
@@ -86,6 +86,7 @@ router.get('/', async (req, res) => {
     }
     } else {
         const theGames= await librariGames();
+        // console.log(theGames, "-------console log the games")
         res.status(200).json(theGames);
     }
 })
