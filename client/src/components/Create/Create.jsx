@@ -6,13 +6,26 @@ import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Styles from './Create.module.css'
 
-
+function validate(form){
+    let error ={};
+    if(!form.name){
+        error.name = "name is required";
+    } else if (!form.description){
+        error.description = "description is required";
+    } else if (!form.released){
+        error.released = "released is required";
+    } else if (!form.platforms){
+        error.platforms = "description is required";
+    }
+    return error;
+}
 
 export default function Create() {
     const dispatch = useDispatch();
     const allPlatforms=['PlayStation', 'Pc','Xbox','Nintendo','SEGA','Android','3DO','Atari','Linux','iOS','Commodore','Apple Macintosh'];
     const allGenres= useSelector((state) => state.stateGenres);
     const [created, setCreated] = useState(false)
+    const [error, setError] = useState({})
     const [form, setForm] = useState({
         name:"",
         description:"",
@@ -38,7 +51,13 @@ export default function Create() {
             [e.target.name]: e.target.value
             
         })
-      
+        setError(validate({
+            ...form,
+            [e.target.name]: e.target.value,
+            [e.target.description]: e.target.value,
+            [e.target.released]: e.target.value
+        }))
+        
     }
     function handleGenre(e){
         e.preventDefault()
@@ -54,6 +73,10 @@ export default function Create() {
             platforms: [...form.platforms, e.target.value]
             
         })
+        setError(validate({
+            ...form,
+            [e.target.platforms]: e.target.value
+        }))
       
     }
 
@@ -96,6 +119,9 @@ export default function Create() {
                         onChange={(e) => handleChange(e)}
                         required
                         />
+                        {error.name &&(
+                            <p className={Styles.error}>{error.name}</p>
+                        )}
                         <label htmlFor="description">Description:</label>
                         <textarea 
                         name="description" 
@@ -106,6 +132,9 @@ export default function Create() {
                         onChange={(e) => handleChange(e)}
                         required
                         ></textarea>
+                        {error.description &&(
+                            <p className={Styles.error}>{error.description}</p>
+                        )}
         
                         <label htmlFor="Released date:">Released date:</label>
                         <input 
@@ -115,6 +144,9 @@ export default function Create() {
                         onChange={(e) => handleChange(e)}
                         required
                         />
+                        {error.released &&(
+                            <p className={Styles.error}>{error.released}</p>
+                        )}
                         <label >Rating:</label>
                         <select onChange={(e) => handleChange(e)}
                             name="rating" 
@@ -150,6 +182,9 @@ export default function Create() {
                                   
                                 </select>
                             </label>
+                                {error.platforms &&(
+                                     <p className={Styles.error}>{error.platforms}</p>
+                                    )}
                             <label htmlFor="image">Image:</label>
                             <input 
                             type="text"
