@@ -200,11 +200,13 @@ export default function Create() {
                     </div>                   
                 </div>
             ) : (
+                <div className={Styles.alerthome}>
                 <div className={Styles.alert}>
                     <p >
                     Your Video Game has been created succesfull!!!
                     </p>
                     <button onClick={(e) => handleAcept(e)}> Acept</button>
+                </div>
                 </div>
             )
             }

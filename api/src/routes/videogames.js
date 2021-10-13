@@ -55,7 +55,7 @@ router.get('/', async (req, res) => {
     const {name}= req.query;
 
     if(name) { //armo la condicion de que si pasan el nombre por query aparezcan los juegos con ese nombre,
-                //sino aparace la lista entera de juegos
+                //sino hay query aparace la lista entera de juegos
 
         const reGames= await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${api_key}`)
     

@@ -70,15 +70,6 @@ export function selectData(data){
     }
 }
 
-// export function postGame(payload){
-//     return async function(dispatch){
-//         const response = await axios.post('http://localhost:3001/videogames', payload)
-//         return response
-        
-//     }
-
-// }
-
 export function getGenres(){
     return async function (dispatch){
         try{

@@ -7,7 +7,8 @@ import Styles from "./SearchBar.module.css"
 
 export default function SearchBar() {
     const dispatch= useDispatch()
-    const [name, setName]= useState("") 
+    const [name, setName]= useState("")
+    
 
     function handleInput(e) {
         e.preventDefault()
@@ -19,6 +20,7 @@ export default function SearchBar() {
         e.preventDefault()
         dispatch(getByName(name))
         setName("")
+        
     }
 
     return(

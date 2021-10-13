@@ -67,6 +67,7 @@ export default function Home() {
 function handleHome(e){
     e.preventDefault()
     dispatch(getGames(e.target.value))
+    setCurrentPage(1)
 }
 // -------------------- filtrados ----------------------------\\
 function handleFilterGenre(e){

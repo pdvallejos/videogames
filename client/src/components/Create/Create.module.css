@@ -124,15 +124,16 @@
     transition-delay:1s;
     transition: 0.5ms;
 }
-
-.one{
-    background-image: url(./bg.png);
+.alerthome{
     background-size: cover;
-    height: 400px;
-    display: flex;
+    width: 800px;
+    height: 570px;
     justify-content: center;
-
+    display: inline-flex;
+    align-content: center;
 }
+
+
 .error{
     color:red;
     font-size: 9px;
